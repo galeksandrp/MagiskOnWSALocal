@@ -831,7 +831,7 @@ artifact_name="WSA${name1}${name2}_${WSA_VER}_${ARCH}_${WSA_REL}"
 echo "$artifact_name"
 echo -e "\nFinishing building...."
 if [ -f "$OUTPUT_DIR" ]; then
-    $SUDO rm -rf "${OUTPUT_DIR:?}"
+    $SUDO rm -rf "${OUTPUT_DIR:?}" || $SUDO find "${OUTPUT_DIR:?}" -mindepth 1 -delete
 fi
 if [ ! -d "$OUTPUT_DIR" ]; then
     mkdir -p "$OUTPUT_DIR"

@@ -120,6 +120,13 @@ winetricks list-installed | grep -E "^msxml6" >/dev/null 2>&1 || {
     cp -r ../wine/.cache/* ~/.cache
     winetricks msxml6 || abort
 }
+
+if [ "$1" = "InstallDependencies" ]; then
+    echo "$COMMAND command requested, tried to install dependencies and exiting" >&2
+
+    exit 0
+fi
+
 WHIPTAIL=$(command -v whiptail 2>/dev/null)
 DIALOG=$(command -v dialog 2>/dev/null)
 DIALOG=${WHIPTAIL:-$DIALOG}
